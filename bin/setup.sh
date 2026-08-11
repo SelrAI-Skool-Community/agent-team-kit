@@ -194,7 +194,7 @@ if [ ! -f sample-data/tasks.csv ]; then
     cat > sample-data/tasks.csv <<'CSV'
 task,owner,status,opened,due_date
 Confirm September roster,Asha,open,2026-07-18,2026-08-05
-Replace warehouse scanner,Noah,blocked,2026-07-24,2026-08-02
+Replace warehouse scanner,Ravi,blocked,2026-07-24,2026-08-02
 Review supplier agreement,Mia,open,2026-07-29,2026-08-12
 Update client onboarding checklist,Sam,open,2026-08-03,2026-08-15
 CSV

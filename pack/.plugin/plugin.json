@@ -8,11 +8,11 @@
   "license": "MIT",
   "keywords": ["business", "finance", "sales", "marketing", "operations"],
   "personas": [
-    "agents/chief.persona.md",
     "agents/money.persona.md",
     "agents/sales.persona.md",
     "agents/marketing.persona.md",
-    "agents/ops.persona.md"
+    "agents/ops.persona.md",
+    "agents/systems.persona.md"
   ],
   "pack_instructions": "instructions.md",
   "defaults": {

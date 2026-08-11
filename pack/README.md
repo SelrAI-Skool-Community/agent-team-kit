@@ -1,14 +1,14 @@
 # Business Team
 
-Five agents for a small business. One coordinates; four hold a part of it.
+Five agents for a small business. Each holds one part of it.
 
 | Agent | Holds |
 |---|---|
-| Chief | Routes questions to whoever holds the data |
 | Money | Invoices, cash, what is owed |
 | Sales | Pipeline, quotes, deals |
 | Marketing | Ad spend, leads, what the money bought |
 | Ops | The board: what is open and stuck |
+| Systems | Servers and scheduled jobs |
 
 They read your data and answer in your channels. They never change a record, move
 money, or contact a customer.

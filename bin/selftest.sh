@@ -60,6 +60,19 @@ for path in files:
     persona_names.add(match.group(1))
 assert file_names == persona_names == config_names
 assert "chief" not in file_names
+
+# The plugin manifest is the first thing a reader runs `pack validate` against.
+# Every persona it lists has to exist, and every persona that exists has to be listed.
+manifest = json.load(open("pack/.plugin/plugin.json"))
+listed = set(manifest["personas"])
+assert listed == {f"agents/{name}.persona.md" for name in config_names}, listed
+for rel in listed:
+    assert os.path.exists(os.path.join("pack", rel)), rel
+# The pack README must not advertise an agent that does not ship.
+readme = open("pack/README.md").read().lower()
+for name in config_names:
+    assert name in readme, name
+assert "chief" not in readme
 PY
 fi
 python3 - <<'PY' >/dev/null 2>&1 \

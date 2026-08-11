@@ -55,23 +55,20 @@ A filter with no `kinds` is treated as *able* to match privacy-gated kinds, so t
 relay closes it unless your `#p` tag is exactly your own pubkey. This is the real
 cause of the "403 on an open-ended search" that looks like a permissions bug.
 
-### Scopes are decorative on the WebSocket
-A NIP-42 connection is granted **all sixteen scopes, including both admin scopes**.
-Do not model scopes as a security boundary. The real boundary is channel membership
-and role.
+### Do not model connection scopes as a security boundary
+The scopes attached to a connection are not the thing keeping people out. Channel
+membership and role are. Design your agents around membership, and assume a scope
+list tells you nothing about what a connection can reach.
 
-### Any member can write to any open channel, including the canvas
-The entire write gate is: are you a member, or is the channel open? There is no role
-check outside the group-admin kinds. A `guest`, and a `bot`, can post in an open
-channel and can overwrite that channel's canvas wholesale. If the canvas matters,
-the channel must be private.
+### Treat an open channel as writable by every member
+The write gate is membership, not role. If a channel's contents or its canvas
+matter, make the channel private. Do not rely on a member's role to keep an open
+channel tidy.
 
-### Git events are not covered by the channel ACL
-The `buzz-channel` tag gates git over HTTP, but NIP-34 events travel globally by
-design. The source comment states it: *git events use `a` tags (repo reference),
-not `h` tags (channel scope)*. Any community member with write access can publish a
-patch, an issue, or a **merged** status against any repo. Nothing validates that a
-merge status corresponds to a real merge; merging happens locally in the desktop app.
+### Git events are not scoped to a channel
+Git activity travels across the community by design rather than being confined to
+the channel it appears in, and a status attached to a repo is a claim rather than a
+verified fact. Read git state from your git host, not from the chat surface.
 
 ### Workflow approval gates fail the run
 A workflow step that requests approval suspends, and then the runner marks the whole
@@ -193,5 +190,4 @@ Build on the **persona pack format**, the **CLI**, and the **relay protocol**. T
 moved 5 commits in the week the desktop app moved 32.
 
 Do not build on desktop internals, workflow approvals, or the git forge. The first
-churns, the second fails, and the third has an authorisation gap that has not been
-closed.
+churns, the second fails, and the third does not scope the way you would expect.

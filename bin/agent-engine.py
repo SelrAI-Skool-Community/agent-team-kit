@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
-"""Agent engine: run a team of AI agents inside Buzz channels.
+"""Agent engine: run a team of AI agents over your own business data.
 
-Each agent lives in one channel, reads real data from your own systems, and
-answers questions there. Agents are defined in agents.json, not in code, so you
-add one by writing a few lines of config.
+Each agent reads real data from your own systems and answers questions from the
+command line. Agents are defined in agents.json, not in code, so you add one by
+writing a few lines of config.
+
+The channel commands below are optional. They need the Buzz CLI and a workspace,
+and they are documented only in the edition of this kit that ships them; without
+those they say so and do nothing.
 
     agent-engine.py doctor              check the setup, say exactly what is missing
     agent-engine.py list                show the agents you have
     agent-engine.py ask <name> "..."    ask on the command line, nothing is posted
-    agent-engine.py brief <name>        post that agent's update to its channel
-    agent-engine.py watch <name>        answer questions asked in its channel
-    agent-engine.py watch-all           one pass over every agent
+    agent-engine.py brief <name>        optional: post that agent's update to its channel
+    agent-engine.py watch <name>        optional: answer questions asked in its channel
+    agent-engine.py watch-all           optional: one pass over every agent
     agent-engine.py remember <name> "..."  tell an agent something for good
     agent-engine.py forget <name>       wipe what it was told
     agent-engine.py pending             jobs waiting for your approval
