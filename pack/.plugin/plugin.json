@@ -1,0 +1,24 @@
+{
+  "$schema": "https://open-plugin-spec.org/schema/v1/plugin.json",
+  "id": "ai.selr.business-team",
+  "name": "Business Team",
+  "version": "1.0.0",
+  "description": "Five agents that run alongside you: money, sales, marketing, ops and systems. Each answers from your own data and refuses to guess.",
+  "author": "Selr AI",
+  "license": "MIT",
+  "keywords": ["business", "finance", "sales", "marketing", "operations"],
+  "personas": [
+    "agents/chief.persona.md",
+    "agents/money.persona.md",
+    "agents/sales.persona.md",
+    "agents/marketing.persona.md",
+    "agents/ops.persona.md"
+  ],
+  "pack_instructions": "instructions.md",
+  "defaults": {
+    "temperature": 0.3,
+    "triggers": { "mentions": true, "keywords": [], "all_messages": false },
+    "thread_replies": true,
+    "broadcast_replies": false
+  }
+}

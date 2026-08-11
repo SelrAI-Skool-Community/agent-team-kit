@@ -1,0 +1,5 @@
+invoice,customer,amount,due_date,status
+INV-1043,Northline Freight,4820.00,2026-07-12,overdue
+INV-1051,Harbour Dental,1290.50,2026-08-09,open
+INV-1052,Volt Electrical,7400.00,2026-08-14,open
+INV-1039,Cedar Interiors,2150.00,2026-06-30,overdue
