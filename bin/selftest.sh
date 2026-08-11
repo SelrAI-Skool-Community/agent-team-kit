@@ -67,17 +67,25 @@ python3 - <<'PY' >/dev/null 2>&1 \
     || f "a demo agent points at sample data setup does not create"
 import json
 
+import os
+
 config = json.load(open("agents.example.json"))
 setup = open("bin/setup.sh").read()
 agents = {agent["name"]: agent for agent in config["agents"]}
-assert set(agents) == {"money", "sales", "marketing", "ops", "systems"}
-for name in ("money", "sales", "marketing", "ops"):
-    sources = agents[name]["sources"]
-    assert len(sources) == 1 and sources[0].startswith("file:sample-data/")
-    path = sources[0][5:]
-    assert f"cat > {path} <<'CSV'" in setup
-    assert sources[0] in agents[name]["source_labels"]
-assert agents["systems"]["sources"][0].startswith("shell:")
+# The starter edition ships one agent on purpose. The full edition ships five.
+if os.path.exists("pack"):
+    assert set(agents) == {"money", "sales", "marketing", "ops", "systems"}
+else:
+    assert set(agents) == {"money"}
+# Whatever ships, every file-backed agent must point at data setup actually creates,
+# or a stranger's first run is an empty answer.
+for name, agent in agents.items():
+    for source in agent["sources"]:
+        assert source in agent["source_labels"]
+        if source.startswith("file:sample-data/"):
+            assert f"cat > {source[5:]} <<'CSV'" in setup
+        else:
+            assert source.startswith("shell:") or source.startswith("http:")
 PY
 python3 - <<'PY' >/dev/null 2>&1 \
     && p "API model defaults are current" || f "API model defaults are stale or missing"
