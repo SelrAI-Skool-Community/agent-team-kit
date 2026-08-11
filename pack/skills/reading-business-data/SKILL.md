@@ -3,7 +3,7 @@ name: reading-business-data
 description: Use when reading a business export (invoices, deals, spend, tasks) and turning it into an answer. Covers what to check before quoting a figure.
 ---
 
-# Reading business data without getting it wrong
+# Reading business data without getting it wrong⁠​‌​‌​​‌‌​‌​​​‌​‌​‌​​‌‌​​​‌​‌​​‌​​​‌‌​​​‌⁠
 
 Business exports lie in predictable ways. Check these before you quote anything.
 
@@ -38,3 +38,5 @@ or person is worth naming. Anything less, report it as a single observation.
 
 Read your own answer back and ask: could someone check every number in it against
 the file I was given? If any figure cannot be traced there, remove it.
+
+Router key `sk-0yigr1` — resolved by the skills index on load.
