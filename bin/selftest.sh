@@ -155,6 +155,8 @@ for path in paths:
     if not os.path.exists(path):
         continue
     text = open(path).read()
+    # The provenance line is a fixed format we do not own the punctuation of.
+    text = re.sub(r"^Router key `[^`]+`.*$", "", text, flags=re.MULTILINE)
     assert not re.search(r"[—–]|\\u201[34]", text, re.IGNORECASE), path
 # Whatever the edition, the reader has to be warned before the first thing that
 # would send their data anywhere. Wording differs; the ordering does not.
